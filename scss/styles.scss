@@ -6,6 +6,7 @@
     text-decoration: none;
 }
 
+
 // nav
 .logo {
     div {
@@ -13,7 +14,7 @@
         height: 15vh;
 
         img {
-            object-fit: cover;
+            object-fit:cover;
             width: 100%;
             height: 100%;
         }
@@ -138,14 +139,14 @@ header {
         .add-chart {
             padding: 1vh 1vw 1vh 1vw;
             height: 4vh;
-            background-color: #6aa40c;
+            background-color: #88d30f;
             font-weight: 700;
             border-radius: 7px;
             border: 1.5px solid #000000;
             width: 100%;
             cursor: pointer;
             &:hover{
-                background-color: #8eda14;
+                background-color: #9cee17;
                 
             }
         }
@@ -154,94 +155,149 @@ header {
 }
 
 
-
-
-
-// Estilos para el contenedor del carrito
 #modal-container {
     display: none;
     position: fixed;
     top: 0;
     right: 0;
     height: 100%;
-    width: 25%; // 1/4 de la pantalla
+    width: 100%; /* Cambiado para ocupar el 100% del ancho */
+    max-width: 400px; /* Ancho máximo para evitar scroll horizontal en dispositivos más grandes */
     background-color: #fff;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    overflow-y: auto; // Agrega barra de desplazamiento vertical si es necesario
-    z-index: 999999999; // Asegura que esté por encima de todo
-  }
-  
-  // Estilos para el encabezado del carrito
-  .modal-header {
-    padding: 27px;
-    background-color: #333;
-    color: #fff;
-    text-align: center; // Centra el contenido
-    position: relative; // Asegura que la posición sea relativa
-  }
-  
-  .modal-header-title {
+    overflow-y: auto;
+    z-index: 999999999;
+    transition: all .7s;
+    animation: carritoEntrance .7s ease 0s 1 normal forwards;
+}
+
+@keyframes carritoEntrance {
+    0% {
+        transform: scaleX(0);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+    }
+}
+
+.modal-header {
+    padding: 3vh;
+    background-color: #88d30f;
+    color: #000000;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+.modal-header-title {
     margin: 0;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); // Centra horizontalmente
-  }
-  
-  // Estilos para la cruz de cerrar
-  .modal-cruz {
+    transform: translateX(-50%);
+}
+
+.modal-cruz {
     width: 20px;
     height: 20px;
     cursor: pointer;
     position: absolute;
     top: 50%;
     right: 10px;
-    transform: translateY(-50%); // Centra verticalmente
-  }
-  
-  // Estilos para el contenido del carrito
-  .modal-content {
-    padding: 10px;
+}
+
+.modal-content {
+    padding: 1.5vh;
     border-bottom: 1px solid #ccc;
-    display: flex; // Mostrar elementos en línea
-  
+    display: flex;
+    flex-wrap: wrap; /* Nueva propiedad para hacer que los elementos se envuelvan en dispositivos pequeños */
+
     img {
-      max-width: 50px; // Tamaño de la imagen ajustado
-      height: auto;
-      margin-right: 10px; // Espacio entre la imagen y el texto
+        max-width: 100%; 
+        height: auto; 
+        margin-bottom: 1vh; 
     }
-  
+
     p {
-     font-size: 2vh;
-    
+        font-size: 2.3vh;
+        padding: 2vh;
     }
-  
+
     h3 {
-      flex-grow: 1; // Hace que el nombre del producto ocupe el espacio restante
+        flex-grow: 1;
+        padding: 2vh;
+        font-size: 2.5vh;
     }
-  }
-  
-  // Estilos específicos para el mensaje de carrito vacío
-  .carrito-vacio {
+    .btn_eliminar-producto {
+        margin: auto; 
+        background-color: #88d30f; 
+        color: #fff; 
+        border: none;
+        padding: 1vh 2vw; 
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border-radius: 7px;
+        &:hover {
+            background-color: #6b9b1a;
+        }
+    }
+}
+
+.carrito-vacio {
     padding-top: 2vh;
-    font-size: 4vh; 
+    font-size: 4vh;
     text-align: center;
-  }
-  
-  // Estilos para el pie de página del carrito
-  .modal-footer {
-    padding: 10px;
+}
+
+.modal-footer {
+    padding: 1vh;
     font-weight: bold;
     border-top: 1px solid #ccc;
-    text-align: center; // Centra el contenido
-  }
-  
-  .carrito_total-compra {
+    text-align: center;
+}
+
+.carrito_total-compra {
     color: #333;
     font-size: 3vh;
-  }
-  
-  // Estilos para el botón de abrir el carrito
-  #carrito {
+}
+
+#carrito {
     cursor: pointer;
-    // Agrega cualquier otro estilo necesario para el botón
-  }
+}
+
+/* Reglas de medios para ajustes específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    #modal-container {
+        width: 100%;
+        max-width: none; /* Eliminar el ancho máximo para dispositivos móviles */
+    }
+}
+
+//nav meddiaquery
+// @media only screen and (max-width: 768px) {
+//     header {
+//         nav {
+//             .container-navbar {
+//                 ul {
+//                     flex-direction: column; /* Cambia la dirección de la lista a columna */
+//                     align-items: center; /* Centra los elementos en el eje transversal */
+
+//                     li {
+//                         margin: 10px 0; /* Agrega espaciado entre elementos */
+//                     }
+
+//                     .logo {
+//                         margin-left: 0; /* Reinicia el margen izquierdo para el logo */
+//                         margin-bottom: 10px; /* Agrega espaciado inferior al logo */
+//                     }
+//                 }
+
+//                 .carrito {
+//                     margin: 10px 0; /* Agrega espaciado entre elementos */
+//                 }
+//             }
+//         }
+//     }
+// }

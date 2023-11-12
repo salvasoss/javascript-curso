@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -113,7 +114,7 @@ header nav div .carrito img {
 #products-container .product .add-chart {
   padding: 1vh 1vw 1vh 1vw;
   height: 4vh;
-  background-color: #6aa40c;
+  background-color: #88d30f;
   font-weight: 700;
   border-radius: 7px;
   border: 1.5px solid #000000;
@@ -121,7 +122,7 @@ header nav div .carrito img {
   cursor: pointer;
 }
 #products-container .product .add-chart:hover {
-  background-color: #8eda14;
+  background-color: #9cee17;
 }
 
 #modal-container {
@@ -130,19 +131,33 @@ header nav div .carrito img {
   top: 0;
   right: 0;
   height: 100%;
-  width: 25%;
+  width: 100%; /* Cambiado para ocupar el 100% del ancho */
+  max-width: 400px; /* Ancho máximo para evitar scroll horizontal en dispositivos más grandes */
   background-color: #fff;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   z-index: 999999999;
+  transition: all 0.7s;
+  animation: carritoEntrance 0.7s ease 0s 1 normal forwards;
 }
 
+@keyframes carritoEntrance {
+  0% {
+    transform: scaleX(0);
+    transform-origin: 100% 100%;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: 100% 100%;
+  }
+}
 .modal-header {
-  padding: 27px;
-  background-color: #333;
-  color: #fff;
+  padding: 3vh;
+  background-color: #88d30f;
+  color: #000000;
   text-align: center;
-  position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .modal-header-title {
@@ -159,24 +174,40 @@ header nav div .carrito img {
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-50%);
 }
 
 .modal-content {
-  padding: 10px;
+  padding: 1.5vh;
   border-bottom: 1px solid #ccc;
   display: flex;
+  flex-wrap: wrap; /* Nueva propiedad para hacer que los elementos se envuelvan en dispositivos pequeños */
 }
 .modal-content img {
-  max-width: 50px;
+  max-width: 100%;
   height: auto;
-  margin-right: 10px;
+  margin-bottom: 1vh;
 }
 .modal-content p {
-  font-size: 2vh;
+  font-size: 2.3vh;
+  padding: 2vh;
 }
 .modal-content h3 {
   flex-grow: 1;
+  padding: 2vh;
+  font-size: 2.5vh;
+}
+.modal-content .btn_eliminar-producto {
+  margin: auto;
+  background-color: #88d30f;
+  color: #fff;
+  border: none;
+  padding: 1vh 2vw;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 7px;
+}
+.modal-content .btn_eliminar-producto:hover {
+  background-color: #6b9b1a;
 }
 
 .carrito-vacio {
@@ -186,7 +217,7 @@ header nav div .carrito img {
 }
 
 .modal-footer {
-  padding: 10px;
+  padding: 1vh;
   font-weight: bold;
   border-top: 1px solid #ccc;
   text-align: center;
@@ -199,6 +230,14 @@ header nav div .carrito img {
 
 #carrito {
   cursor: pointer;
+}
+
+/* Reglas de medios para ajustes específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  #modal-container {
+    width: 100%;
+    max-width: none; /* Eliminar el ancho máximo para dispositivos móviles */
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -4,7 +4,9 @@ const productos = [
     { id: 3, nombre: "Creatina Monohidratada Star Nutrition", sabor: "Sin sabor", precio: 20000, imagen: "https://d3ugyf2ht6aenh.cloudfront.net/stores/002/792/557/products/star-nutrition-creatine-monohydrate1-dc32cb0696afe533fc16761557247757-640-0.jpg" },
 ];
 
-const carrito = [];
+
+//carrito Storage
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 productos.forEach((producto) => {
     let div = document.createElement("div");
@@ -37,7 +39,7 @@ productos.forEach((producto) => {
             icon: "success",
             title: `Producto agregado al carrito`,
             showConfirmButton: false,
-            timer: 1000,
+            timer: 900,
         });
 
         carrito.push(button.producto);
@@ -51,9 +53,10 @@ const modalContainer = document.getElementById("modal-container");
 
 verCarrito.addEventListener("click", () => {
 
-    modalContainer.style.display = "block";
-    modalContainer.innerHTML = "";
+    modalContainer.style.display = "block"; //visibilidad del modal
+    modalContainer.innerHTML = ""; //limpia el contenido previo antes de agregar nuevos productos
 
+    //Creacion del header del modal
     const modalHeader = document.createElement("div");
     modalHeader.className = "modal-header";
     modalHeader.innerHTML = `
@@ -67,12 +70,14 @@ verCarrito.addEventListener("click", () => {
     modalCruz.className = "modal-cruz";
     modalHeader.append(modalCruz);
 
-    //cerrar carrito de compras
+
+    //animacion cerrar carrito
     modalCruz.addEventListener("click", () => {
         modalContainer.style.display = "none";
     });
 
-    //carrito productos agregados
+
+    //Carrito vacio y agregado de productos al carrito
     if (carrito.length === 0) {
         const carritoVacio = document.createElement("p");
         carritoVacio.innerText = "Carrito vacío";
@@ -86,24 +91,73 @@ verCarrito.addEventListener("click", () => {
                 <img src="${product.imagen}">
                 <h3>${product.nombre}</h3>
                 <p>${product.precio}$</p>
+                <button class = "btn_eliminar-producto" data-id="${product.id}"> Eliminar </button>
             `;
             modalContainer.append(carritoContent);
         });
-        //footer
-        const modalFooter = document.createElement("div");
-        modalFooter.className = "modal-footer";
-
-        const total = carrito.reduce((acum, product) => acum + product.precio, 0);
-
-
-        modalFooter.innerHTML = `
-            <div class = "carrito_total-compra">
-              Total: ${total} $ 
-            </div>
-            `;
-
-        modalContainer.append(modalFooter);
     }
+
+    //ELiminar producto del carrito
+    const botonesEliminar = document.querySelectorAll(".btn_eliminar-producto");
+
+    botonesEliminar.forEach(eliminarProducto => {
+        eliminarProducto.addEventListener("click", () => {
+            // Obtiene el id del producto clickeado
+            const productoId = eliminarProducto.getAttribute('data-id');
+
+            const index = carrito.findIndex(producto => producto.id === productoId);
+
+            if (index == -1) {
+                // Alerta de confirmacion
+                Swal.fire({
+                    title: "Eliminar producto del carrito?",
+                    icon: "warning",
+                    
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Eliminar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        // Elimina el producto del carrito
+                        carrito.splice(index, 1);
+
+                        // Actualiza el localStorage 
+                        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+                        // Elimina el elemento del DOM 
+                        eliminarProducto.closest('.modal-content').remove();
+
+                        // Recalcula el total después de la eliminación
+                        const total = carrito.reduce((acum, product) => acum + product.precio, 0);
+
+                        // Actualiza el total en el footer
+                        document.querySelector('.carrito_total-compra').innerText = `Total: ${total} $`;
+                    }
+                });
+            }
+        });
+    });
+
+    //footer
+    const modalFooter = document.createElement("div");
+    modalFooter.className = "modal-footer";
+
+    // Calcula el total inicial
+    const totalInicial = carrito.reduce((acum, product) => acum + product.precio, 0);
+
+    modalFooter.innerHTML = `
+    <div class="carrito_total-compra">
+        Total: ${totalInicial} $ 
+    </div>
+    `;
+
+    modalContainer.append(modalFooter);
+
+    // Actualiza el localStorage con el carrito actualizado
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
 });
 
 
