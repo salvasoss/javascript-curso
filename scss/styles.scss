@@ -161,8 +161,8 @@ header {
     top: 0;
     right: 0;
     height: 100%;
-    width: 100%; /* Cambiado para ocupar el 100% del ancho */
-    max-width: 400px; /* Ancho máximo para evitar scroll horizontal en dispositivos más grandes */
+    width: 100%; 
+    max-width: 400px;
     background-color: #fff;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
@@ -212,7 +212,7 @@ header {
     padding: 1.5vh;
     border-bottom: 1px solid #ccc;
     display: flex;
-    flex-wrap: wrap; /* Nueva propiedad para hacer que los elementos se envuelvan en dispositivos pequeños */
+    flex-wrap: wrap; 
 
     img {
         max-width: 100%; 
@@ -230,6 +230,7 @@ header {
         padding: 2vh;
         font-size: 2.5vh;
     }
+
     .btn_eliminar-producto {
         margin: auto; 
         background-color: #88d30f; 
@@ -267,37 +268,11 @@ header {
     cursor: pointer;
 }
 
-/* Reglas de medios para ajustes específicos para dispositivos móviles */
+//celular
 @media only screen and (max-width: 600px) {
     #modal-container {
         width: 100%;
-        max-width: none; /* Eliminar el ancho máximo para dispositivos móviles */
+        max-width: none; 
     }
 }
 
-//nav meddiaquery
-// @media only screen and (max-width: 768px) {
-//     header {
-//         nav {
-//             .container-navbar {
-//                 ul {
-//                     flex-direction: column; /* Cambia la dirección de la lista a columna */
-//                     align-items: center; /* Centra los elementos en el eje transversal */
-
-//                     li {
-//                         margin: 10px 0; /* Agrega espaciado entre elementos */
-//                     }
-
-//                     .logo {
-//                         margin-left: 0; /* Reinicia el margen izquierdo para el logo */
-//                         margin-bottom: 10px; /* Agrega espaciado inferior al logo */
-//                     }
-//                 }
-
-//                 .carrito {
-//                     margin: 10px 0; /* Agrega espaciado entre elementos */
-//                 }
-//             }
-//         }
-//     }
-// }

@@ -47,6 +47,7 @@ productos.forEach((producto) => {
     });
 });
 
+
 //creacion del container del modal y su titulo
 const verCarrito = document.getElementById("carrito");
 const modalContainer = document.getElementById("modal-container");
