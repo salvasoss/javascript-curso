@@ -1,0 +1,5 @@
+[
+    { "id": 1, "categoria": "proteina", "nombre": "Whey Protein Star Nutrition", "sabor": "chocolate", "precio": 15000, "imagen": "https://desuplementos.com/wp-content/uploads/2019/12/Star-Nutrition-Whey-Protein-Isolada-1000-Chocolate-Frente-scaled-e1629853813382.jpg" },
+    { "id": 2, "categoria": "proteina", "nombre": "Whey Protein Star Nutrition", "sabor": "vainilla", "precio": 15000, "imagen": "https://army.com.ar/images/thumbs/0000037_platinum-whey-isolate-2lb_510.jpeg" },
+    { "id": 3, "categoria": "creatina", "nombre": "Creatina Monohidratada Star Nutrition", "sabor": "Sin sabor", "precio": 20000, "imagen": "https://d3ugyf2ht6aenh.cloudfront.net/stores/002/792/557/products/star-nutrition-creatine-monohydrate1-dc32cb0696afe533fc16761557247757-640-0.jpg" }
+]

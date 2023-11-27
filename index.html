@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href=" " type="image/x-icon">
     <title> FitnessFuel</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-     
+
 </head>
 
 <body>
@@ -20,26 +20,25 @@
             <div>
                 <div class="container-navbar">
                     <ul>
-                        <li class="logo">
-                            <a href=" ">
+                        <li class="logo" id="all-products">
                                 <div> <img src="img/logo.png" alt="logo"> </div>
-                            </a>
                         </li>
 
-                        <li> <a href="#proteina"> Proteina </a></li>
+                        <li id="proteina">  Proteina </li>
 
-                        <li> <a href=""> Creatina </a></li>
+                        <li id="creatina">  Creatina </li>
 
                         <li> <a href=" "> Contacto </a> </li>
                     </ul>
                 </div>
 
-                <div id = "carrito" class="carrito">
-                    <img src="img/carrito-de-compras.png" alt="carrito de compras logo"> 
+                <div id="carrito" class="carrito">
+                    <img src="img/carrito-de-compras.png" alt="carrito de compras logo">
                 </div>
             </div>
         </nav>
     </header>
+   
 
     <section>
         <div class="container_suplementos-background">
@@ -48,17 +47,24 @@
     </section>
 
     <main id="destacados">
-        <h2 > Destacados </h2>
+        <div id="boton-filtrar_container">
+        </div>
+
+        <h2 id="products-title"> Destacados </h2>
+
         <div id="products-container"> </div>
     </main>
 
-    <div id = "modal-container" class="modal-container">
+    <div id="modal-container" class="modal-container">
     </div>
+
+    <div id="alerta-contacto"> </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script src="js/main.js"> </script>
 </body>
 
 </html>
+

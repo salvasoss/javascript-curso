@@ -19,7 +19,7 @@
 header {
   position: sticky;
   top: 0;
-  z-index: 99999;
+  z-index: 9;
   background-color: white;
   box-shadow: 0px 12px 24px -8px rgba(0, 0, 0, 0.37);
 }
@@ -38,10 +38,9 @@ header nav div .container-navbar ul {
 }
 header nav div .container-navbar ul li {
   margin-left: 6vw;
-}
-header nav div .container-navbar ul li a {
   color: #000000;
   font-size: 3vh;
+  cursor: pointer;
 }
 header nav div .container-navbar ul .logo {
   margin-left: auto;
@@ -73,7 +72,6 @@ header nav div .carrito img {
 }
 
 #destacados {
-  background-image: url(/img/fondo\ verde\ 2.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -135,7 +133,7 @@ header nav div .carrito img {
   background-color: #fff;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
-  z-index: 999999999;
+  z-index: 99;
   transition: all 0.7s;
   animation: carritoEntrance 0.7s ease 0s 1 normal forwards;
 }
@@ -151,7 +149,7 @@ header nav div .carrito img {
   }
 }
 .modal-header {
-  padding: 3vh;
+  padding: 4vh;
   background-color: #88d30f;
   color: #000000;
   text-align: center;
@@ -216,19 +214,85 @@ header nav div .carrito img {
 }
 
 .modal-footer {
-  padding: 1vh;
+  padding-top: 1vh;
   font-weight: bold;
   border-top: 1px solid #ccc;
+  background-color: #88d30f;
   text-align: center;
+  position: sticky;
+  z-index: 999;
+  bottom: 0;
 }
 
 .carrito_total-compra {
-  color: #333;
+  color: #413f3f;
   font-size: 3vh;
+  border-bottom: 2px solid #ccc;
+}
+
+#checkout {
+  font-size: 2vw;
+  justify-content: center;
+  padding: 1vh;
+  font-weight: 400;
+  cursor: pointer;
+}
+#checkout:hover {
+  font-weight: bolder;
 }
 
 #carrito {
   cursor: pointer;
+}
+
+.alerta-contacto_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000000000000000000000000000000000;
+  width: 40vw;
+  height: 50vh;
+  background-color: rgb(168, 27, 27);
+  display: flex;
+}
+.alerta-contacto_container .alerta-contacto_title {
+  width: 18vw;
+  display: flex;
+  overflow: hidden;
+  border: #000000 1px solid;
+  flex-direction: column;
+}
+.alerta-contacto_container .alerta-contacto_title h4 {
+  font-size: 12vh;
+  overflow: hidden;
+}
+.alerta-contacto_container .alerta-contacto-redes {
+  width: 22vw;
+}
+.alerta-contacto_container .alerta-contacto-redes .alerta-contacto-redes_container {
+  margin: 2vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.alerta-contacto_container .alerta-contacto-redes .alerta-contacto-redes_container div {
+  margin-bottom: 3vh;
+}
+.alerta-contacto_container .alerta-contacto-redes .alerta-contacto-redes_container div .social-media_logo {
+  width: 3vw;
+}
+.alerta-contacto_container #alerta-cruz {
+  width: 2vw;
+  position: absolute;
+  top: 2%;
+  left: 93%;
+}
+.alerta-contacto_container #alerta-cruz img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
