@@ -7,17 +7,19 @@ const catalogoDom = async () => {
     try {
         const response = await fetch(`../productos.json`);
         const data = await response.json();
-        
+
         data.forEach((producto) => {
             let div = document.createElement("div");
+            div.className = "product";
             div.innerHTML = `
-              <div class="product">
+              <div class="product-info">
                   <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
                   <h3>${producto.nombre}</h3>
                   <span>$${producto.precio}</span>
                   <h4>Sabor: ${producto.sabor}</h4> 
-                  <button class="add-chart">Agregar al Carrito</button>
+
               </div>
+              <button class="add-chart">AGREGAR AL CARRITO</button>
             `;
 
             const products = document.getElementById("products-container");
@@ -54,195 +56,199 @@ catalogoDom();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //filtado al clickear
-    const proteinaFilter = document.getElementById("proteina");
-    const creatinaFilter = document.getElementById("creatina");
-    const allProductsFilter = document.getElementById("all-products");
+//filtado al clickear
+const proteinaFilter = document.getElementById("proteina");
+const creatinaFilter = document.getElementById("creatina");
+const allProductsFilter = document.getElementById("all-products");
 
 
-    proteinaFilter.addEventListener("click", () => {
-        // Cambio de título
-        const filtradosTitle = document.getElementById("products-title");
-        filtradosTitle.innerText = "Proteina";
+proteinaFilter.addEventListener("click", () => {
+    // Cambio de título
+    const filtradosTitle = document.getElementById("products-title");
+    filtradosTitle.innerText = "Proteina";
 
-        const productsProteinaContainer = document.getElementById("products-container");
-        productsProteinaContainer.innerHTML = "";
+    const productsProteinaContainer = document.getElementById("products-container");
+    productsProteinaContainer.innerHTML = "";
 
 
-        // Filtrado de productos proteína
-        const productosProteina = async () => {
-            try {
-                const response = await fetch(`../productos.json`);
-                const data = await response.json();
+    // Filtrado de productos proteína
+    const productosProteina = async () => {
+        try {
+            const response = await fetch(`../productos.json`);
+            const data = await response.json();
 
-                // Filtrar productos por categoría "proteina"
-                const productosProteina = data.filter(producto => producto.categoria === "proteina");
+            // Filtrar productos por categoría "proteina"
+            const productosProteina = data.filter(producto => producto.categoria === "proteina");
 
-                // Recorrer productos filtrados
-                productosProteina.forEach((producto) => {
-                    const proteinaProductosDiv = document.createElement("div");
-                    proteinaProductosDiv.innerHTML = `
-                        <div class="product">
-                            <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
-                            <h3>${producto.nombre}</h3>
-                            <span>$${producto.precio}</span>
-                            <h4>Sabor: ${producto.sabor}</h4>
-                            <button class="add-chart">Agregar al Carrito</button>
-                        </div>
+            // Recorrer productos filtrados
+            productosProteina.forEach((producto) => {
+                const proteinaProductosDiv = document.createElement("div");
+                proteinaProductosDiv.className = "product";
+                proteinaProductosDiv.innerHTML = `
+                    <div class="product-info">
+                    <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
+                    <h3>${producto.nombre}</h3>
+                    <span>$${producto.precio}</span>
+                    <h4>Sabor: ${producto.sabor}</h4> 
+  
+                </div>
+                <button class="add-chart">Agregar al Carrito</button>
                     `;
 
-                    productsProteinaContainer.append(proteinaProductosDiv);
+                productsProteinaContainer.append(proteinaProductosDiv);
 
-                    const button = proteinaProductosDiv.querySelector(".add-chart");
-                    button.producto = {
-                        imagen: producto.imagen,
-                        id: producto.id,
-                        nombre: producto.nombre,
-                        sabor: producto.sabor,
-                        precio: producto.precio,
-                    };
+                const button = proteinaProductosDiv.querySelector(".add-chart");
+                button.producto = {
+                    imagen: producto.imagen,
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    sabor: producto.sabor,
+                    precio: producto.precio,
+                };
 
-                    button.addEventListener("click", () => {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Producto agregado al carrito",
-                            showConfirmButton: false,
-                            timer: 900,
-                        });
-
-                        carrito.push(button.producto);
+                button.addEventListener("click", () => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Producto agregado al carrito",
+                        showConfirmButton: false,
+                        timer: 900,
                     });
+
+                    carrito.push(button.producto);
                 });
-            } catch (error) {
-                console.log(error);
-            }
-        };
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-        productosProteina();
-    });
-
-
-    creatinaFilter.addEventListener("click", () => {
-        // Cambio de título
-        const filtradosTitle = document.getElementById("products-title");
-        filtradosTitle.innerText = "Creatina";
-
-        const productsCreatinaContainer = document.getElementById("products-container");
-        productsCreatinaContainer.innerHTML = "";
+    productosProteina();
+});
 
 
-        // Filtrado de productos proteína
-        const productosCreatina = async () => {
-            try {
-                const response = await fetch(`../productos.json`);
-                const data = await response.json();
+creatinaFilter.addEventListener("click", () => {
+    // Cambio de título
+    const filtradosTitle = document.getElementById("products-title");
+    filtradosTitle.innerText = "Creatina";
 
-                // Filtrar productos por categoría "creatina"
-                const productosCreatina = data.filter(producto => producto.categoria === "creatina");
+    const productsCreatinaContainer = document.getElementById("products-container");
+    productsCreatinaContainer.innerHTML = "";
 
-                // Recorrer productos filtrados
-                productosCreatina.forEach((producto) => {
-                    const creatinaProductosDiv = document.createElement("div");
-                    creatinaProductosDiv.innerHTML = `
-                        <div class="product">
-                            <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
-                            <h3>${producto.nombre}</h3>
-                            <span>$${producto.precio}</span>
-                            <h4>Sabor: ${producto.sabor}</h4>
-                            <button class="add-chart">Agregar al Carrito</button>
-                        </div>
+
+    // Filtrado de productos proteína
+    const productosCreatina = async () => {
+        try {
+            const response = await fetch(`../productos.json`);
+            const data = await response.json();
+
+            // Filtrar productos por categoría "creatina"
+            const productosCreatina = data.filter(producto => producto.categoria === "creatina");
+
+            // Recorrer productos filtrados
+            productosCreatina.forEach((producto) => {
+                const creatinaProductosDiv = document.createElement("div");
+                creatinaProductosDiv.className = "product";
+                creatinaProductosDiv.innerHTML = `
+                    <div class="product-info">
+                        <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
+                        <h3>${producto.nombre}</h3>
+                        <span>$${producto.precio}</span>
+                        <h4>Sabor: ${producto.sabor}</h4> 
+                    </div>
+                    <button class="add-chart">Agregar al Carrito</button>
                     `;
 
-                    productsCreatinaContainer.append(creatinaProductosDiv);
+                productsCreatinaContainer.append(creatinaProductosDiv);
 
-                    const button = creatinaProductosDiv.querySelector(".add-chart");
-                    button.producto = {
-                        imagen: producto.imagen,
-                        id: producto.id,
-                        nombre: producto.nombre,
-                        sabor: producto.sabor,
-                        precio: producto.precio,
-                    };
+                const button = creatinaProductosDiv.querySelector(".add-chart");
+                button.producto = {
+                    imagen: producto.imagen,
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    sabor: producto.sabor,
+                    precio: producto.precio,
+                };
 
-                    button.addEventListener("click", () => {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Producto agregado al carrito",
-                            showConfirmButton: false,
-                            timer: 900,
-                        });
-
-                        carrito.push(button.producto);
+                button.addEventListener("click", () => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Producto agregado al carrito",
+                        showConfirmButton: false,
+                        timer: 900,
                     });
+
+                    carrito.push(button.producto);
                 });
-            } catch (error) {
-                console.log(error);
-            }
-        };
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-        productosCreatina();
-    });
+    productosCreatina();
+});
 
-    allProductsFilter.addEventListener("click", () => {
-        // Cambio de título
-        const filtradosTitle = document.getElementById("products-title");
-        filtradosTitle.innerText = "Todos los Productos";
+allProductsFilter.addEventListener("click", () => {
+    // Cambio de título
+    const filtradosTitle = document.getElementById("products-title");
+    filtradosTitle.innerText = "Todos los Productos";
 
-        const allProductsContainer = document.getElementById("products-container");
-        allProductsContainer.innerHTML = "";
+    const allProductsContainer = document.getElementById("products-container");
+    allProductsContainer.innerHTML = "";
 
 
-        // Filtrado de productos proteína
-        const allProducts = async () => {
-            try {
-                const response = await fetch(`../productos.json`);
-                const data = await response.json();
+    // Filtrado de productos proteína
+    const allProducts = async () => {
+        try {
+            const response = await fetch(`../productos.json`);
+            const data = await response.json();
 
-                // Recorrer productos 
-                data.forEach((producto) => {
-                    const allProductsDiv = document.createElement("div");
-                    allProductsDiv.innerHTML = `
-                        <div class="product">
-                            <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
-                            <h3>${producto.nombre}</h3>
-                            <span>$${producto.precio}</span>
-                            <h4>Sabor: ${producto.sabor}</h4>
-                            <button class="add-chart">Agregar al Carrito</button>
-                        </div>
+            // Recorrer productos 
+            data.forEach((producto) => {
+                const allProductsDiv = document.createElement("div");
+                allProductsDiv.className= "product";
+                allProductsDiv.innerHTML = `
+                    <div class="product-info">
+                        <img src="${producto.imagen}" alt="${producto.nombre} ${producto.sabor}">
+                        <h3>${producto.nombre}</h3>
+                        <span>$${producto.precio}</span>
+                        <h4>Sabor: ${producto.sabor}</h4> 
+                    </div>
+                    <button class="add-chart">Agregar al Carrito</button>
                     `;
 
-                    allProductsContainer.append(allProductsDiv);
+                allProductsContainer.append(allProductsDiv);
 
-                    const button = allProductsDiv.querySelector(".add-chart");
-                    button.producto = {
-                        imagen: producto.imagen,
-                        id: producto.id,
-                        nombre: producto.nombre,
-                        sabor: producto.sabor,
-                        precio: producto.precio,
-                    };
+                const button = allProductsDiv.querySelector(".add-chart");
+                button.producto = {
+                    imagen: producto.imagen,
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    sabor: producto.sabor,
+                    precio: producto.precio,
+                };
 
-                    button.addEventListener("click", () => {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Producto agregado al carrito",
-                            showConfirmButton: false,
-                            timer: 900,
-                        });
-
-                        carrito.push(button.producto);
+                button.addEventListener("click", () => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Producto agregado al carrito",
+                        showConfirmButton: false,
+                        timer: 900,
                     });
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        };
 
-        allProducts();
-    });
+                    carrito.push(button.producto);
+                });
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    allProducts();
+});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -341,8 +347,23 @@ verCarrito.addEventListener("click", () => {
     //footer
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
-    
-    
+
+    //Carrito en link WHATSAPP
+    const obtenerTextoCarrito = ((carrito) => {
+        let texto = "Productos en el carrito:";
+
+        carrito.forEach((producto) => {
+            texto += `
+                Nombre: ${producto.nombre}
+                Sabor: ${producto.sabor}
+                Precio: ${producto.precio}
+                _______________________________________
+            `;
+        });
+
+        return texto;
+    })
+
     // Calcula el total inicial
     const totalInicial = carrito.reduce((acum, product) => acum + product.precio, 0);
 
@@ -351,12 +372,12 @@ verCarrito.addEventListener("click", () => {
         Total: ${totalInicial} $ 
     </div>
 
-    <a href="https://wa.me/543512289769?text=Hola! Estoy interesado en tus suplementos" target="_blank">
+    <a href="https://wa.me/543512289769?text=${encodeURIComponent(`¡Hola! Estoy interesado en tus suplementos \n ${obtenerTextoCarrito(carrito)}`)}" target="_blank">
     <div id= "checkout"> COMPRAR </div> 
     </a>
      
     `;
-    
+
     modalContainer.append(modalFooter);
 
     // Actualiza el localStorage con el carrito actualizado
@@ -380,16 +401,16 @@ const alertaContactoPromise = () => {
 
 
 
-alertaContactoPromise () 
-.then ((response) => {
-    const destacados = document.getElementById ("destacados"); 
-    destacados.style.opacity = ".6";
-    alertaContacto.style.display = "flex";
-    alertaContacto.style.opacity = 1; 
+alertaContactoPromise()
+    .then((response) => {
+        const destacados = document.getElementById("destacados");
+        destacados.style.opacity = ".6";
+        alertaContacto.style.display = "flex";
+        alertaContacto.style.opacity = 1;
 
-    const alertaContactoContainer = document.createElement("div");
-    alertaContactoContainer.className = "alerta-contacto_container";
-    alertaContactoContainer.innerHTML = `
+        const alertaContactoContainer = document.createElement("div");
+        alertaContactoContainer.className = "alerta-contacto_container";
+        alertaContactoContainer.innerHTML = `
 
         <div id = "alerta-cruz"> <img src="../img/cruz.png" alt="Cruz cerrar alerta"> </div>
         
@@ -425,23 +446,23 @@ alertaContactoPromise ()
             </div>
         </div>
     `;
-    alertaContacto.append(alertaContactoContainer);
+        alertaContacto.append(alertaContactoContainer);
 
-    const cruzAlerta = document.getElementById ("alerta-cruz"); 
-    cruzAlerta.addEventListener ( "click" , () => {
-        alertaContacto.style.display = "none";
-        destacados.style.opacity = "1";
-    });
+        const cruzAlerta = document.getElementById("alerta-cruz");
+        cruzAlerta.addEventListener("click", () => {
+            alertaContacto.style.display = "none";
+            destacados.style.opacity = "1";
+        });
 
-    
-})
-.catch ((error) => {
-    const errorDiv = document.createElement ("div");
-    errorDiv.innerHTML = `
+
+    })
+    .catch((error) => {
+        const errorDiv = document.createElement("div");
+        errorDiv.innerHTML = `
     Error: ${error}
     `;
-	alertaContacto.append (errorDiv);
+        alertaContacto.append(errorDiv);
 
-});
+    });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -19,16 +19,22 @@
         <nav>
             <div>
                 <div class="container-navbar">
+
+                    <div class="logo" id="all-products">  
+                        <a href="./index.html">
+                            <img src="img/logo.png" alt="logo">
+                        </a> 
+                       
+                    </div>
+
                     <ul>
-                        <li class="logo" id="all-products">
-                                <div> <img src="img/logo.png" alt="logo"> </div>
-                        </li>
+                        <li id="all-products">  <a href="#products-title"> TODOS LOS PRODUCTOS </a>  </li>
 
-                        <li id="proteina">  Proteina </li>
+                        <li id="proteina"> <a href="#products-title"> PROTEINA </a>  </li>
 
-                        <li id="creatina">  Creatina </li>
+                        <li id="creatina">  <a href="#products-title"> CREATINA </a>  </li>
 
-                        <li> <a href=" "> Contacto </a> </li>
+                        <li > <a href="#footer" class="contacto-nav"> CONTACTO </a> </li>
                     </ul>
                 </div>
 
@@ -39,25 +45,54 @@
         </nav>
     </header>
    
+    <main >
 
-    <section>
-        <div class="container_suplementos-background">
-            <h1> Suplementos FitnessFuel</h1>
-        </div>
-    </section>
+        <section>
+            <div class="container_suplementos-background">
+                <h1> Suplementos FitnessFuel</h1>
+            </div>
+        </section>
 
-    <main id="destacados">
-        <div id="boton-filtrar_container">
-        </div>
+        <section id="destacados">
+            <h2 id="products-title"> PRODUCTOS </h2>
 
-        <h2 id="products-title"> Destacados </h2>
-
-        <div id="products-container"> </div>
+            <div id="products-container"> </div>
+        </section>
+        
     </main>
 
+    <footer id="footer">
+        <div>
+            <div class="copyright"> <h3>&copy; Fitness Fuel</h3> </div>
+            <div class="footer-img"> <img src="img/logo.png" alt="logo"></div>
+            <div class="icons"> 
+                <ul>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="img/instaa.png"
+                            alt="acceso a instagram"></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/" target="_blank"><img src="img/facebookkk.png"
+                            alt="acceso a facebook"></a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="img/tik.png"
+                            alt="acceso a tiktok"></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/" target="_blank"><img src="img/tw.png"
+                            alt="acceso a twitter"></a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </footer>
+
+    <!-- carrito -->
     <div id="modal-container" class="modal-container">
     </div>
 
+    <!-- alerta asincronica -->
     <div id="alerta-contacto"> </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

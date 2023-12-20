@@ -1,37 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
 
-h1 {
-  font-size: 4vh;
-  text-align: center;
-}
-
-.checkout-container {
-  margin: 3vw;
-  display: flex;
-  flex-direction: row;
-}
-.checkout-container .checkout.form {
-  display: flex;
-  flex-direction: row;
-}
-.checkout-container #resumen-compra {
-  background-color: rgb(228, 224, 224);
-  padding: 1.5vw;
-}
-.checkout-container #resumen-compra h2 {
-  text-align: center;
-}
-.checkout-container #resumen-compra #dropdown-carrito ul li {
-  display: inline-block;
-}
-.checkout-container #resumen-compra #dropdown-carrito .dropdown-arrow {
-  width: 1.3vw;
-}
 
 /*# sourceMappingURL=checkout.css.map */
