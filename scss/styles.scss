@@ -69,6 +69,7 @@ header {
                         font-size: 2.3rem;
                         cursor: pointer;
                         @include montserrat();
+                        
 
                         a {
                             color: #000000;
@@ -121,15 +122,19 @@ header {
 //catalogo 
 
 #destacados {
-    // background-image: url(/img/fondo\ verde\ 2.jpg);
-    // background-size: cover;
-    // background-position: center;
-
-    h2 {
-        text-align: center;
-        font-size: 4vw;
-        @include montserrat();
+    background-image: url(/img/fondo\ verde\ 2.jpg);
+    background-size: cover;
+    background-position: center;
+    div{
+        margin: 0 2rem 0 2rem;
+        h2 {
+            text-align: center;
+            font-size: 6vh;
+            padding: 2rem 0 2rem 0;
+            @include montserrat();
+        }
     }
+    
 }
 
 
@@ -142,7 +147,7 @@ header {
     align-items: center;
 
     .product {
-        width: 28.5rem;
+        width: 30rem;
         height: auto;
         border-radius: 1rem;
         border: 1.7px solid #9cee17 ;
@@ -160,14 +165,14 @@ header {
 
 
             img {
-                width: auto;
-                height: 26rem;
+                max-width: 100%;
+                height: 24rem;
                 object-fit: cover;
                 padding: .7rem;
             }
 
             h3 {
-                font-size: 2rem;
+                font-size: 1.9rem;
                 padding: .7rem;  
                 @include montserrat();
                 text-align: center;
@@ -204,22 +209,6 @@ header {
             }
         }
     }
-
-    // .product {
-    //     width: 20rem;
-    //     height: 27rem;
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: center;
-    //     justify-content: space-between;
-    //     margin: 2rem;
-
-    //     img{
-    //         width: 100%;
-    //         height: 100%;
-    //         object-fit: contain;
-    //     }
-    // }
 }
 
 
@@ -421,14 +410,13 @@ header {
 // footer
 
 footer {
-    background-color: #ffff;
-    box-shadow: 0px 12px 24px -8px rgba(0, 0, 0, 0.37);
+    background-color: #000000;
     div {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
         align-items: center;
-        margin: 1rem;
+       padding: 1rem;
         
 
         .copyright {
@@ -436,6 +424,7 @@ footer {
 
             h3 {
                 font-size: 2rem;
+                color: #fff;
             }
         }
 
