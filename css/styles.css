@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=Roboto+Condensed:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800;900&display=swap");
 * {
   margin: 0;
@@ -25,7 +26,7 @@ header nav div {
   align-items: center;
 }
 header nav div .container-navbar {
-  margin: 1.7rem;
+  padding: 1.7rem;
 }
 header nav div .container-navbar .logo {
   margin-left: 1.6rem;
@@ -46,7 +47,7 @@ header nav div .container-navbar ul {
 }
 header nav div .container-navbar ul li {
   margin-left: 6vw;
-  font-size: 2.3rem;
+  font-size: 3vh;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
 }
@@ -57,13 +58,30 @@ header nav div .container-navbar ul li .contacto-nav {
   color: #88d30f;
 }
 header nav div .carrito {
-  margin-right: 2vw;
+  margin: 0 2vw 0 2vw;
   text-align: center;
   cursor: pointer;
+  width: 2.5vw;
+  height: auto;
 }
 header nav div .carrito img {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hamburger-menu {
+  display: none; /* Oculta el botón de hamburguesa en pantallas grandes */
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 2vw;
+  width: 4rem;
   height: auto;
+}
+.hamburger-menu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .container_suplementos-background {
@@ -364,7 +382,10 @@ footer div .icons ul {
   column-gap: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
+  .menu {
+    display: none;
+  }
   #modal-container {
     width: 100%;
     max-width: none;

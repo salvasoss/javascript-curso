@@ -41,7 +41,8 @@ header {
             align-items: center;
 
             .container-navbar {
-                margin: 1.7rem;
+                // margin: 1.7rem;
+                padding: 1.7rem;
 
                 .logo {
                     margin-left: 1.6rem;
@@ -66,7 +67,7 @@ header {
 
                     li {
                         margin-left: 6vw;
-                        font-size: 2.3rem;
+                        font-size: 3vh;
                         cursor: pointer;
                         @include montserrat();
                         
@@ -85,18 +86,36 @@ header {
 
 
             .carrito {
-                margin-right: 2vw;
+                margin: 0 2vw 0 2vw;
                 text-align: center;
                 cursor: pointer;
+                width: 2.5vw;
+                height: auto;
 
                 img {
-                    max-width: 100%;
-                    height: auto;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
         }
     }
 }
+
+.hamburger-menu {
+    display: none; /* Oculta el botón de hamburguesa en pantallas grandes */
+    cursor: pointer;
+    font-size: 2rem;
+    margin-right: 2vw;
+    width: 4rem;
+    height: auto;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 
 // img principio pag
 
@@ -454,10 +473,17 @@ footer {
 
 
 
-//celular
-@media only screen and (max-width: 600px) {
+//tablet
+@media only screen and (max-width: 768px) {
+
+    .menu {
+        display: none;
+
+    }
+
     #modal-container {
         width: 100%;
         max-width: none;
     }
 }
+
