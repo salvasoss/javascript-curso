@@ -466,3 +466,28 @@ alertaContactoPromise()
     });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//MENU HAMBURGUESA
+
+//abrir menu
+
+const logoHamburguesa = document.getElementById("hamburger");
+logoHamburguesa.addEventListener ("click" , () => {
+    navbar.style.display = "block";
+})
+//cerrar menu 
+const navbar = document.getElementById("navbar"); 
+const cruzHamburgesa = document.getElementById("cruz-hamburger");
+
+cruzHamburgesa.addEventListener ("click" , () => {
+    navbar.style.display = "none";
+})
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+//SCROLL HEADER ANIMATION 
+
+window.addEventListener ("scroll" , () =>{
+    const header = document.getElementById ("header");
+    header.classList.toggle ("abajo", window.scrollY > 0);
+})

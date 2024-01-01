@@ -16,81 +16,40 @@
 
 <body>
 
-    <header>
+    <header id="header">
+        <div class="logo"> <a href="index.html"><img src="img/logo sin fondo.png" alt="logo"> </a></div>
 
-    
-        <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+        <nav class="nav-bar" id="navbar">
 
-                <a class="navbar-brand logo" href="./index.html"> <img src="img/logo.png" alt="logo"></a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav menu">
-                        <li class="nav-item">
-                            <a class="nav-link" id="all-products" href="#products-title">PRODUCTOS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="proteina" href="#products-title">PROTEINA</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="creatina" href="#products-title">CREATINA</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#products-title">CONTACTO</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="carrito" class="carrito">
-                    <img src="img/carrito-de-compras.png" alt="carrito de compras logo">
-                </div>
-
+            <ul>
+                <li class="cruz-hamburger"> <img src="img/cruz.png" alt="cerrar cruz" id="cruz-hamburger"></li>
+                <li id="all-products"><a href="#products-title"> Productos</a></li>
+                <li id="proteina"><a href="#products-title" class="par"> Proteina</a></li>
+                <li id="creatina"><a href="#products-title">Creatina </a></li>
+                <li><a href="" class="active par"> Contacto </a></li>
+            </ul>
+        </nav>
+        <div class="menu-chart">
+            <div id="carrito" class="carrito">
+                <img src="img/carrito-de-compras.png" alt="carrito de compras">
             </div>
-        </nav> -->
 
-
-
-        <nav>
-            <div>
-                <div class="container-navbar">
-
-                    <div class="logo" id="all-products">
-                        <a href="./index.html">
-                            <img src="img/logo.png" alt="logo">
-                        </a>
-
-                    </div>
-
-                    <ul class="menu">
-                        <li id="all-products"> <a href="#products-title">PRODUCTOS </a> </li>
-
-                        <li id="proteina"> <a href="#products-title"> PROTEINA </a> </li>
-
-                        <li id="creatina"> <a href="#products-title"> CREATINA </a> </li>
-
-                        <li> <a href="#footer" class="contacto-nav"> CONTACTO </a> </li>
-                    </ul>
-                </div>
-
-                <div class="hamburger-menu"> <img src="img/menu.png" alt=" hamburger-menu"></div>
-
-                <div id="carrito" class="carrito">
-                    <img src="img/carrito-de-compras.png" alt="carrito de compras logo">
-                </div>
+            <div class="hamburger" id="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
             </div>
-        </nav> 
+        </div>
+
+
     </header>
 
     <main>
 
         <section>
             <div class="container_suplementos-background">
-                <h1> Suplementos FitnessFuel</h1>
+                <img src="img/suplementos fondo.webp" alt="suplementos fondo">
+
             </div>
         </section>
 
@@ -102,7 +61,42 @@
             <div id="products-container"> </div>
         </section>
 
+        <section>
+            <div class="contact-title">
+                <h3> CONTACTO</h3>
+            </div>
+
+            <div class="contacto">
+                <div>
+                    
+                </div>
+
+                <div> 
+                    <form>
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required>
+                    
+                        <label for="phone">Teléfono:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                        <button type="submit" class="enviar">Enviar</button>
+                      </form>
+                </div>
+            </div>
+            
+        </section>
     </main>
+
+
+    
+    
+    
 
     <footer id="footer">
         <div>
